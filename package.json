@@ -1,0 +1,36 @@
+{
+  "name": "internet-movie-database-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "echo test",
+    "lint": "eslint --quiet '**/*.js'",
+		"start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tetrash/internet-movie-database-api.git"
+  },
+  "author": "Karol Szymanowski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tetrash/internet-movie-database-api/issues"
+  },
+  "homepage": "https://github.com/tetrash/internet-movie-database-api#readme",
+	"husky": {
+		"hooks": {
+			"pre-commit": "npm run lint",
+			"pre-push": "npm test"
+		}
+	},
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+		"eslint": "^5.16.0",
+		"eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0",
+		"husky": "^1.3.1"
+  }
+}
