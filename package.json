@@ -4,7 +4,7 @@
   "description": "Api for movie database",
   "main": "app.js",
   "scripts": {
-    "test": "npm run lint && echo \"No test specified\"",
+    "test": "yarn run lint && echo \"No test specified\"",
     "lint": "eslint --quiet '**/*.js'",
     "start": "node app"
   },
@@ -20,8 +20,8 @@
   "homepage": "https://github.com/tetrash/internet-movie-database-api#readme",
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint",
-      "pre-push": "npm test"
+      "pre-commit": "yarn run lint",
+      "pre-push": "yarn test"
     }
   },
   "dependencies": {
