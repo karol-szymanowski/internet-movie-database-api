@@ -1,0 +1,1 @@
+create database internet_movie_database_api_test owner docker;
