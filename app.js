@@ -1,14 +1,14 @@
 'use strict';
 
 const app = require('express')();
-require('dotenv').config();
+const bodyParser = require('body-parser');
+const routes = require('./api/controller');
 
 const PORT = process.env.PORT || 5000;
 
-app.get('/', (req, res) => {
-  res.send('Hello world!');
-});
+app.use(bodyParser.json());
+app.use(routes);
 
-app.listen(PORT, () => {
-  console.log(`App is listening on port ${PORT}`);
-});
+app.listen(PORT);
+
+module.exports = app;
