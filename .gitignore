@@ -55,9 +55,14 @@ typings/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+.env.*
+!.env.example
+!.env.*.example
 
 # next.js build output
 .next
 
 .idea
+.DS_Store
+
+package-lock.json
