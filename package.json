@@ -4,9 +4,14 @@
   "description": "Api for movie database",
   "main": "app.js",
   "scripts": {
-    "test": "npm run lint && echo \"No test specified\"",
+    "test": "NODE_ENV=test yarn run lint && yarn run db:migrate || true && yarn run mocha",
     "lint": "eslint --quiet '**/*.js'",
-    "start": "node app"
+    "start": "node app",
+    "start:dev": "NODE_ENV=development yarn start",
+    "mocha": "NODE_ENV=test PORT=8877 mocha -t 10000 --exit --recursive",
+    "db:migrate": "sequelize db:migrate --config ./config",
+    "db:seed": "sequelize db:seed:all --config ./config",
+    "db:migrate:undo": "sequelize db:migrate:undo:all --config ./config"
   },
   "repository": {
     "type": "git",
@@ -20,21 +25,30 @@
   "homepage": "https://github.com/tetrash/internet-movie-database-api#readme",
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint",
-      "pre-push": "npm test"
+      "pre-commit": "yarn run lint",
+      "pre-push": "yarn test"
     }
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
     "dotenv": "^7.0.0",
     "express": "^4.16.4",
+    "joi": "^14.3.1",
     "pg": "^7.9.0",
     "pg-hstore": "^2.3.2",
-    "sequelize": "^5.2.12"
+    "sequelize": "^5.2.12",
+    "sequelize-cli": "^5.4.0"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
-    "husky": "^1.3.1"
+    "husky": "^1.3.1",
+    "mocha": "^6.1.2",
+    "node-mocks-http": "^1.7.3",
+    "supertest": "^4.0.2"
   }
 }

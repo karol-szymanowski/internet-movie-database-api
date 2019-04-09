@@ -1,8 +1,17 @@
-.git
+# docker files
 Dockerfile
-.DS_Store
+docker-compose.yml
+
+# git files
+.git
 .gitignore
+
+# logs
+*.log
+
+
+.DS_Store
 README.md
-env.*
 LICENSE
 .idea
+node_modules
