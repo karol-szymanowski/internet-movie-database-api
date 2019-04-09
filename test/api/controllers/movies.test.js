@@ -57,7 +57,6 @@ describe('Controller: Movies', () => {
         expect(err).to.be.null;
         expect(res).to.be.ok;
         expect(res).to.have.status(200);
-        expect(res.body[0]).to.contain.keys('title', 'id', 'imdb_id', 'json_data');
 
         done();
       });
@@ -72,6 +71,9 @@ describe('Controller: Movies', () => {
         expect(res).to.be.ok;
         expect(res).to.have.status(200);
         expect(res.body).to.be.an('array').to.have.lengthOf(3);
+        res.body.forEach((obj) => {
+          expect(obj).to.contain.keys('title', 'id', 'imdb_id', 'json_data');
+        });
 
         done();
       });
@@ -86,6 +88,9 @@ describe('Controller: Movies', () => {
         expect(res).to.be.ok;
         expect(res).to.have.status(200);
         expect(res.body).to.be.an('array').to.have.lengthOf(2);
+        res.body.forEach((obj) => {
+          expect(obj).to.contain.keys('title', 'id', 'imdb_id', 'json_data');
+        });
 
         done();
       });
