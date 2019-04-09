@@ -9,6 +9,8 @@ docker-compose.yml
 # logs
 *.log
 
+# .env files
+.env*
 
 .DS_Store
 README.md
