@@ -5,7 +5,7 @@ const { Op } = require('sequelize');
 const omdbapi = require('../middlewares/omdbapi');
 const validator = require('../middlewares/validator');
 const moviesSchema = require('./schemas/movies-schema');
-const moviesModel = require('../../models').Movies;
+const { Movies } = require('../../models');
 
 const router = express.Router();
 
@@ -16,7 +16,7 @@ router.post('/movies', validator(moviesSchema.post), omdbapi, (req, res) => {
     json_data: req.movie,
   };
 
-  moviesModel.upsert(payload, { returning: true }).then((response) => {
+  Movies.upsert(payload, { returning: true }).then((response) => {
     res.json(response);
   }).catch(() => {
     res.status(500).json({ error: 'Something went wrong' });
@@ -30,7 +30,7 @@ router.get('/movies', validator(moviesSchema.get), (req, res) => {
     },
   };
 
-  moviesModel.findAll({ where }).then((response) => {
+  Movies.findAll({ where }).then((response) => {
     res.json(response);
   }).catch(() => {
     res.status(500).json({ error: 'Something went wrong' });

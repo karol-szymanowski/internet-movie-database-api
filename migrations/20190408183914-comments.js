@@ -15,7 +15,8 @@ module.exports = {
           model: 'Movies',
           key: 'id',
         },
-        allowNull: false
+        allowNull: false,
+        onDelete: 'CASCADE'
       },
       comment: {
         type: Sequelize.TEXT,

@@ -38,6 +38,7 @@ module.exports = {
     host: DB_HOST,
     port: DB_PORT || 5432,
     dialect: 'postgres',
+    logging: false,
     pool: {
       maxConnections: DB_MAX_CONNECTIONS || null,
       maxIdleTime: DB_MAX_IDLE_TIME || null,

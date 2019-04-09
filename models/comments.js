@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id',
         // deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
       },
-      allowNull: false
+      allowNull: false,
+      onDelete: 'CASCADE'
     },
     comment: {
       type: DataTypes.TEXT,

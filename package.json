@@ -4,13 +4,13 @@
   "description": "Api for movie database",
   "main": "app.js",
   "scripts": {
-    "test": "yarn run lint && yarn run mocha",
+    "test": "NODE_ENV=test yarn run lint && yarn run db:migrate || true && yarn run mocha",
     "lint": "eslint --quiet '**/*.js'",
     "start": "node app",
     "start:dev": "NODE_ENV=development yarn start",
     "mocha": "NODE_ENV=test PORT=8877 mocha -t 10000 --exit --recursive",
     "db:migrate": "sequelize db:migrate --config ./config",
-    "db:seed": "db:seed:all --config ./config",
+    "db:seed": "sequelize db:seed:all --config ./config",
     "db:migrate:undo": "sequelize db:migrate:undo:all --config ./config"
   },
   "repository": {
