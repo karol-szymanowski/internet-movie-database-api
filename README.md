@@ -10,7 +10,7 @@ Live app: https://internet-movie-database-api.herokuapp.com/movies
 - `POST /comments`
 - `GET /comments`
 
-Documentation for endpoints [here](docs/).
+More details [here](docs/).
 
 ## Requirements
 
