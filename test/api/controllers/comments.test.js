@@ -4,11 +4,10 @@ const { Comments, Movies } = require('../../../models');
 
 describe('Controller: Comments', () => {
   beforeEach((done) => {
-
     const comment = [{
       movie_id: 1,
       comment: 'test',
-    },{
+    }, {
       movie_id: 2,
       comment: 'test',
     }];
@@ -16,7 +15,7 @@ describe('Controller: Comments', () => {
       id: 1,
       title: 'test',
       imdb_id: 'test1',
-    },{
+    }, {
       id: 2,
       title: 'test2',
       imdb_id: 'test2',

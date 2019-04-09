@@ -8,11 +8,11 @@ describe('Controller: Movies', () => {
       id: 1,
       title: 'test',
       imdb_id: 'test1',
-    },{
+    }, {
       id: 2,
       title: 'test2',
       imdb_id: 'test2',
-    },{
+    }, {
       id: 3,
       title: 'Mamma mia!',
       imdb_id: 'test3',
