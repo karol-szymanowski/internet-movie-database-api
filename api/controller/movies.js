@@ -17,7 +17,7 @@ router.post('/movies', validator(moviesSchema.post), omdbapi, (req, res) => {
   };
 
   Movies.upsert(payload, { returning: true }).then((response) => {
-    res.json(response);
+    res.json(response[0]);
   }).catch(() => {
     res.status(500).json({ error: 'Something went wrong' });
   });

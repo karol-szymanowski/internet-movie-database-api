@@ -1,6 +1,6 @@
 version: '2'
 services:
-  web:
+  api:
     build: .
     ports:
       - "5000:5000"
@@ -8,6 +8,14 @@ services:
       - db
     volumes:
       - ./:/opt/api/
+    environment:
+      - NODE_ENV=development
+      - DB_USERNAME=docker
+      - DB_PASSWORD=password
+      - DB_DATABASE=internet_movie_database_api
+      - DB_HOST=db
+      - DB_PORT=5432
+      - OMDB_API_KEY=1158976a
   db:
     image: postgres:latest
     environment:
