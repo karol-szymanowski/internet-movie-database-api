@@ -4,7 +4,7 @@ require('dotenv').config({ path: `.env.${process.env.NODE_ENV || 'development'}`
 
 const REQUIRED_KEYS = [
   'DB_USERNAME',
-  'DB_PASSWORD',
+  'DB_DATABASE',
   'DB_HOST',
   'OMDB_API_KEY',
 ];
