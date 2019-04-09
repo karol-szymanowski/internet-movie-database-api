@@ -13,7 +13,7 @@ router.post('/comments', validator(commentsSchema.post), (req, res) => {
     movie_id: req.body.ID,
     comment: req.body.comment,
   }, { returning: true }).then((comment) => {
-    res.json(comment);
+    res.json(comment[0]);
   }).catch((error) => {
     if (error.name === 'SequelizeForeignKeyConstraintError') {
       res.status(400).json({ error: 'Movie id doesn\'t exists' });
