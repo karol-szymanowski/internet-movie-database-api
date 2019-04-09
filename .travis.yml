@@ -6,6 +6,8 @@ services:
 before_install:
   - sudo service postgresql stop
   - sudo docker-compose up -d db
+before_script:
+  - sequelize db:migrate || true
 branches:
   only:
     - master
