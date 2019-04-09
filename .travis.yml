@@ -4,8 +4,8 @@ node_js:
 services:
   - docker
 before_install:
-  - service postgresql stop
-  - docker-compose up -d db
+  - sudo service postgresql stop
+  - sudo docker-compose up -d db
 branches:
   only:
     - master
