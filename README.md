@@ -44,6 +44,9 @@ DB_PORT=5432
 DB_MAX_CONNECTIONS=20 // optional
 DB_MAX_IDLE_TIME=10000 // optional
 
+LOG_SAVE=true // optional
+LOG_FILE=combined.log // optional
+
 OMDB_API_KEY=[your api key]
 
 PORT=5000 // optional, default 5000

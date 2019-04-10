@@ -5,10 +5,11 @@ const { Op } = require('sequelize');
 const validator = require('../middlewares/validator');
 const commentsSchema = require('./schemas/comments-schema');
 const { Comments } = require('../../models');
+const logger = require('../helpers/logger');
 
 const router = express.Router();
 
-router.post('/comments', validator(commentsSchema.post), (req, res) => {
+router.post('/', validator(commentsSchema.post), (req, res) => {
   Comments.upsert({
     movie_id: req.body.ID,
     comment: req.body.comment,
@@ -19,11 +20,12 @@ router.post('/comments', validator(commentsSchema.post), (req, res) => {
       res.status(400).json({ error: 'Movie id doesn\'t exists' });
       return;
     }
+    logger.error(error);
     res.status(500).json({ error: 'Something went wrong' });
   });
 });
 
-router.get('/comments', (req, res) => {
+router.get('/', (req, res) => {
   const where = req.query.id && {
     movie_id: {
       [Op.eq]: req.query.id,
@@ -32,7 +34,8 @@ router.get('/comments', (req, res) => {
 
   Comments.findAll({ where }).then((comments) => {
     res.json(comments);
-  }).catch(() => {
+  }).catch((error) => {
+    logger.error(error);
     res.status(500).json({ error: 'Something went wrong' });
   });
 });

@@ -6,10 +6,11 @@ const omdbapi = require('../middlewares/omdbapi');
 const validator = require('../middlewares/validator');
 const moviesSchema = require('./schemas/movies-schema');
 const { Movies } = require('../../models');
+const logger = require('../helpers/logger');
 
 const router = express.Router();
 
-router.post('/movies', validator(moviesSchema.post), omdbapi, (req, res) => {
+router.post('/', validator(moviesSchema.post), omdbapi, (req, res) => {
   const payload = {
     title: req.movie.Title,
     imdb_id: req.movie.imdbID,
@@ -18,12 +19,13 @@ router.post('/movies', validator(moviesSchema.post), omdbapi, (req, res) => {
 
   Movies.upsert(payload, { returning: true }).then((response) => {
     res.json(response[0]);
-  }).catch(() => {
+  }).catch((error) => {
+    logger.error(error);
     res.status(500).json({ error: 'Something went wrong' });
   });
 });
 
-router.get('/movies', validator(moviesSchema.get), (req, res) => {
+router.get('/', validator(moviesSchema.get), (req, res) => {
   const where = {
     title: {
       [Op.iLike]: req.query.title ? `%${decodeURI(req.query.title)}%` : '%',
@@ -32,7 +34,8 @@ router.get('/movies', validator(moviesSchema.get), (req, res) => {
 
   Movies.findAll({ where }).then((response) => {
     res.json(response);
-  }).catch(() => {
+  }).catch((error) => {
+    logger.error(error);
     res.status(500).json({ error: 'Something went wrong' });
   });
 });
