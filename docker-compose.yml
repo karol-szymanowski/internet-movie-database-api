@@ -15,7 +15,7 @@ services:
       - DB_DATABASE=internet_movie_database_api
       - DB_HOST=db
       - DB_PORT=5432
-      - OMDB_API_KEY=1158976a
+      - OMDB_API_KEY=
   db:
     image: postgres:latest
     environment:
