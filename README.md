@@ -46,6 +46,7 @@ DB_MAX_IDLE_TIME=10000 // optional
 
 LOG_SAVE=true // optional
 LOG_FILE=combined.log // optional
+LOG_LEVEL=info // optional, more about levels here https://www.npmjs.com/package/winston#logging-levels
 
 OMDB_API_KEY=[your api key]
 
