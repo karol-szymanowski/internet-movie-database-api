@@ -25,11 +25,17 @@ const {
   DB_MAX_CONNECTIONS,
   DB_MAX_IDLE_TIME,
   OMDB_API_KEY,
+  LOG_LEVEL,
+  LOG_FILE,
+  LOG_SAVE,
 } = process.env;
 
 module.exports = {
   use_env_variable: false,
   omdbApiKey: OMDB_API_KEY,
+  logLevel: LOG_LEVEL,
+  logFile: LOG_FILE,
+  logSave: LOG_SAVE,
 
   [process.env.NODE_ENV || 'development']: {
     username: DB_USERNAME,
