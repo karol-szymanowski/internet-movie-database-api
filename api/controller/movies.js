@@ -26,7 +26,7 @@ router.post('/movies', validator(moviesSchema.post), omdbapi, (req, res) => {
 router.get('/movies', validator(moviesSchema.get), (req, res) => {
   const where = {
     title: {
-      [Op.iLike]: req.query.title ? `%${req.query.title}%` : '%',
+      [Op.iLike]: req.query.title ? `%${decodeURI(req.query.title)}%` : '%',
     },
   };
 
